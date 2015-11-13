@@ -17,5 +17,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '4.0'
   s.osx.deployment_target = '10.6'
   s.tvos.deployment_target = '9.0'
-  s.dependency 'ObjectiveSugar', :podspec =>'https://raw.githubusercontent.com/ios-tech/ObjectiveRecord/tvos/ObjectiveRecord.podspec'
+  
+  s.dependency 'ObjectiveSugar'
 end
