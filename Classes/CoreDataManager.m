@@ -144,7 +144,11 @@
 }
 
 - (NSURL *)sqliteStoreURL {
-    NSURL *directory = [self isOSX] ? self.applicationSupportDirectory : self.applicationDocumentsDirectory;
+#if TARGET_OS_IOS
+	NSURL *directory = self.applicationDocumentsDirectory;
+#elif TARGET_OS_TV
+	NSURL *directory = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+#endif
     NSURL *databaseDir = [directory URLByAppendingPathComponent:[self databaseName]];
 
     [self createApplicationSupportDirIfNeeded:directory];
